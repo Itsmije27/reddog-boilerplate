@@ -1,0 +1,52 @@
+.root {
+    -fx-font-family: "System";
+    -fx-background-color: #faf6f0;
+}
+
+.greeting-artwork {
+    -fx-background-color: linear-gradient(to bottom right, #431c29, #842f39);
+}
+
+.artwork-ring {
+    -fx-fill: transparent;
+    -fx-stroke: rgba(255, 202, 174, 0.35);
+}
+
+.artwork-sun {
+    -fx-fill: linear-gradient(to bottom right, #ffc49b, #ee8b71 48%, #ce5358);
+}
+
+.greeting-content {
+    -fx-padding: 30 36 30 44;
+}
+
+.greeting-title {
+    -fx-font-family: "Serif";
+    -fx-font-size: 48px;
+    -fx-text-fill: #331c25;
+}
+
+.greeting-button {
+    -fx-background-color: transparent, #7a2b3b;
+    -fx-background-insets: -4, 0;
+    -fx-background-radius: 14, 10;
+    -fx-padding: 13 20;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: white;
+    -fx-cursor: hand;
+}
+
+.greeting-button:hover {
+    -fx-background-color: transparent, #90394b;
+}
+
+.greeting-button:pressed {
+    -fx-background-color: transparent, #602030;
+}
+
+.greeting-button:focused {
+    -fx-border-color: #7a2b3b;
+    -fx-border-insets: -4;
+    -fx-border-radius: 14;
+}
