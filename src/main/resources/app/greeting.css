@@ -1,52 +1,598 @@
 .root {
-    -fx-font-family: "System";
-    -fx-background-color: #faf6f0;
+    -fx-font-family: "Segoe UI Rounded", "Comic Sans MS", "Trebuchet MS", "System";
 }
 
-.greeting-artwork {
-    -fx-background-color: linear-gradient(to bottom right, #431c29, #842f39);
+/* =========================================================
+   KAWAII LIGHT THEME (Erdbeermilch & Pastell-Comic)
+   ========================================================= */
+
+.app-shell {
+    -fx-background-color: linear-gradient(to bottom right, #fff6fb, #fff2e8 55%, #f5f0ff);
+    -fx-padding: 24;
 }
 
-.artwork-ring {
-    -fx-fill: transparent;
-    -fx-stroke: rgba(255, 202, 174, 0.35);
+.main-grid {
+    -fx-alignment: center;
 }
 
-.artwork-sun {
-    -fx-fill: linear-gradient(to bottom right, #ffc49b, #ee8b71 48%, #ce5358);
+/* Linkes Chibi-Artwork-Panel im Comic-Rahmen */
+.artwork-card {
+    -fx-background-color: linear-gradient(to bottom right, #ffd9ec, #ffe8f4 52%, #e6dcff);
+    -fx-background-radius: 34;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 3.5;
+    -fx-border-radius: 34;
+    -fx-padding: 20 18 22 18;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 5, 6);
 }
 
-.greeting-content {
-    -fx-padding: 30 36 30 44;
+.artwork-stage {
+    -fx-padding: 6;
+}
+
+.mood-pill {
+    -fx-background-color: #fffdf7;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 999;
+    -fx-padding: 7 18;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 3);
+}
+
+/* Pastell-Bubbles & Funkeln hinter dem Chibi */
+.artwork-bubble-pink {
+    -fx-fill: rgba(255, 155, 198, 0.45);
+}
+
+.artwork-bubble-mint {
+    -fx-fill: rgba(147, 236, 209, 0.55);
+}
+
+.artwork-bubble-yellow {
+    -fx-fill: rgba(255, 227, 130, 0.72);
+}
+
+.artwork-bubble-lavender {
+    -fx-fill: rgba(202, 178, 255, 0.55);
+}
+
+.sparkle-yellow {
+    -fx-fill: #ffe27a;
+}
+
+.sparkle-pink {
+    -fx-fill: #ff8dc4;
+}
+
+.sparkle-mint {
+    -fx-fill: #8de8cb;
+}
+
+.sparkle-lavender {
+    -fx-fill: #cbb2ff;
+}
+
+/* Chibi RedDog Vektor-Farben & Comic-Outlines */
+.chibi-shadow {
+    -fx-fill: rgba(74, 37, 69, 0.14);
+}
+
+.chibi-fur {
+    -fx-fill: #ff8478;
+}
+
+.chibi-cream {
+    -fx-fill: #fff6ea;
+}
+
+.chibi-inner-ear {
+    -fx-fill: #ffb8d2;
+}
+
+.chibi-collar {
+    -fx-fill: #8ce4c9;
+}
+
+.chibi-bell {
+    -fx-fill: #ffe066;
+}
+
+.chibi-blush {
+    -fx-fill: rgba(255, 130, 175, 0.65);
+}
+
+.chibi-eye {
+    -fx-fill: #3d1d3b;
+}
+
+.chibi-sparkle-dot {
+    -fx-fill: #ffffff;
+}
+
+.chibi-happy-eye {
+    -fx-stroke: #3d1d3b;
+    -fx-stroke-width: 4;
+}
+
+.chibi-mouth {
+    -fx-stroke: #3d1d3b;
+    -fx-stroke-width: 3;
+}
+
+.chibi-heart {
+    -fx-fill: #ff6ea8;
+}
+
+.chibi-outline {
+    -fx-stroke: #4a2545;
+    -fx-stroke-width: 3.5;
+    -fx-stroke-line-join: round;
+    -fx-stroke-line-cap: round;
+}
+
+.chibi-outline-thin {
+    -fx-stroke: #4a2545;
+    -fx-stroke-width: 2.2;
+    -fx-stroke-line-join: round;
+    -fx-stroke-line-cap: round;
+}
+
+/* Rechte Spalte */
+.content-column {
+    -fx-padding: 6 4 6 4;
+}
+
+.counter-pill {
+    -fx-background-color: #fff0a8;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 999;
+    -fx-padding: 7 16;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 3);
+}
+
+/* Comic-Sprechblasen-Karte */
+.speech-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 3.5;
+    -fx-border-radius: 30;
+    -fx-padding: 22 26;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 5, 6);
 }
 
 .greeting-title {
-    -fx-font-family: "Serif";
-    -fx-font-size: 48px;
-    -fx-text-fill: #331c25;
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
 }
 
-.greeting-button {
-    -fx-background-color: transparent, #7a2b3b;
-    -fx-background-insets: -4, 0;
-    -fx-background-radius: 14, 10;
-    -fx-padding: 13 20;
+.greeting-subtitle {
     -fx-font-size: 15px;
+    -fx-text-fill: #7b4e74;
+}
+
+/* Rundes Eingabefeld im Comic-Stil */
+.input-caption {
+    -fx-font-size: 13px;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: #6a3d64;
+    -fx-padding: 0 0 0 12;
+}
+
+.kawaii-input {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 3;
+    -fx-border-radius: 999;
+    -fx-padding: 12 20;
+    -fx-font-size: 15px;
+    -fx-text-fill: #4a2545;
+    -fx-prompt-text-fill: #b48cae;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 4);
+}
+
+.kawaii-input:focused {
+    -fx-background-color: #fffafd;
+    -fx-border-color: #ff6ba9;
+    -fx-effect: dropshadow(one-pass-box, #ff6ba9, 1, 1.0, 0, 4);
+}
+
+/* =========================================================
+   SUPER-RUNDE BUBBLE-BUTTONS MIT COMICRÄNDERN
+   ========================================================= */
+
+.greeting-button {
+    -fx-background-color:
+            #ff7db6,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0.0));
+    -fx-background-insets: 0, 3 12 22 12;
+    -fx-background-radius: 999, 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 3;
+    -fx-border-radius: 999;
+    -fx-padding: 11 24 11 14;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
     -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 5);
 }
 
 .greeting-button:hover {
-    -fx-background-color: transparent, #90394b;
+    -fx-background-color:
+            #ff91c2,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.0));
+    -fx-translate-y: -1;
 }
 
 .greeting-button:pressed {
-    -fx-background-color: transparent, #602030;
+    -fx-background-color: #f065a2;
+    -fx-translate-y: 3;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 2);
 }
 
-.greeting-button:focused {
-    -fx-border-color: #7a2b3b;
-    -fx-border-insets: -4;
-    -fx-border-radius: 14;
+.wag-button {
+    -fx-background-color:
+            #67bfff,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.45), rgba(255, 255, 255, 0.0));
+    -fx-background-insets: 0, 3 12 22 12;
+    -fx-background-radius: 999, 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 3;
+    -fx-border-radius: 999;
+    -fx-padding: 11 22 11 14;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 5);
+}
+
+.wag-button:hover {
+    -fx-background-color:
+            #82ccff,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.52), rgba(255, 255, 255, 0.0));
+    -fx-translate-y: -1;
+}
+
+.wag-button:pressed {
+    -fx-background-color: #4caef7;
+    -fx-translate-y: 3;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 2);
+}
+
+.reset-button {
+    -fx-background-color:
+            #a3efd8,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.48), rgba(255, 255, 255, 0.0));
+    -fx-background-insets: 0, 3 12 22 12;
+    -fx-background-radius: 999, 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 3;
+    -fx-border-radius: 999;
+    -fx-padding: 11 22 11 14;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 5);
+}
+
+.reset-button:hover {
+    -fx-background-color:
+            #b8f6e3,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.0));
+    -fx-translate-y: -1;
+}
+
+.reset-button:pressed {
+    -fx-background-color: #84dfc4;
+    -fx-translate-y: 3;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 2);
+}
+
+/* Kleine runde Icon-Punkte auf den Buttons */
+.button-badge-dot-primary {
+    -fx-min-width: 26px;
+    -fx-max-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-height: 26px;
+    -fx-background-color: #fff5fa;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2;
+    -fx-border-radius: 999;
+}
+
+.button-badge-dot-primary .button-badge-symbol {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ff5d9e;
+}
+
+.button-badge-dot-blue {
+    -fx-min-width: 26px;
+    -fx-max-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-height: 26px;
+    -fx-background-color: #f2faff;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2;
+    -fx-border-radius: 999;
+}
+
+.button-badge-dot-blue .button-badge-symbol {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2f96e8;
+}
+
+.button-badge-dot-secondary {
+    -fx-min-width: 26px;
+    -fx-max-width: 26px;
+    -fx-min-height: 26px;
+    -fx-max-height: 26px;
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2;
+    -fx-border-radius: 999;
+}
+
+.button-badge-dot-secondary .button-badge-symbol {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+}
+
+/* Pill-Button für Theme-Toggle & Kreis-Button für Über */
+.pill-utility-button {
+    -fx-background-color: #e4d5ff;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 999;
+    -fx-padding: 6 16 6 8;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 3);
+}
+
+.pill-utility-button:hover {
+    -fx-background-color: #ede3ff;
+    -fx-translate-y: -1;
+}
+
+.pill-utility-button:pressed {
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 1);
+}
+
+.theme-dot {
+    -fx-min-width: 24px;
+    -fx-max-width: 24px;
+    -fx-min-height: 24px;
+    -fx-max-height: 24px;
+    -fx-background-color: #fff5ba;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2;
+    -fx-border-radius: 999;
+}
+
+.theme-dot-symbol {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+}
+
+.circle-icon-button {
+    -fx-min-width: 40px;
+    -fx-max-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-height: 40px;
+    -fx-padding: 0;
+    -fx-background-color: #ffd3e6;
+    -fx-background-radius: 999;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 2.5;
+    -fx-border-radius: 999;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 3);
+}
+
+.circle-icon-button:hover {
+    -fx-background-color: #ffe2ef;
+    -fx-translate-y: -1;
+}
+
+.circle-icon-button:pressed {
+    -fx-translate-y: 2;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 0, 1);
+}
+
+/* Über-Dialog */
+.about-card {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30;
+    -fx-border-color: #4a2545;
+    -fx-border-width: 3.5;
+    -fx-border-radius: 30;
+    -fx-padding: 22 24;
+    -fx-effect: dropshadow(one-pass-box, #4a2545, 1, 1.0, 5, 6);
+}
+
+.about-title {
+    -fx-font-size: 24px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #4a2545;
+}
+
+.about-body {
+    -fx-font-size: 14px;
+    -fx-text-fill: #6a3d64;
+}
+
+/* =========================================================
+   KAWAII DARK THEME (Sternennacht / Midnight Berry)
+   ========================================================= */
+
+.app-shell.dark-theme {
+    -fx-background-color: linear-gradient(to bottom right, #241933, #312147 55%, #231b38);
+}
+
+.dark-theme .artwork-card {
+    -fx-background-color: linear-gradient(to bottom right, #422663, #61357d 55%, #4a2c6b);
+    -fx-border-color: #150c21;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 5, 6);
+}
+
+.dark-theme .mood-pill {
+    -fx-background-color: #36254d;
+    -fx-border-color: #f4b8e4;
+    -fx-text-fill: #fff2fb;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 3);
+}
+
+.dark-theme .artwork-bubble-pink {
+    -fx-fill: rgba(255, 142, 199, 0.25);
+}
+
+.dark-theme .artwork-bubble-mint {
+    -fx-fill: rgba(143, 240, 210, 0.22);
+}
+
+.dark-theme .artwork-bubble-yellow {
+    -fx-fill: rgba(255, 229, 143, 0.35);
+}
+
+.dark-theme .artwork-bubble-lavender {
+    -fx-fill: rgba(191, 166, 255, 0.28);
+}
+
+.dark-theme .chibi-shadow {
+    -fx-fill: rgba(15, 8, 25, 0.38);
+}
+
+.dark-theme .chibi-outline,
+.dark-theme .chibi-outline-thin {
+    -fx-stroke: #21102e;
+}
+
+.dark-theme .counter-pill {
+    -fx-background-color: #4b3466;
+    -fx-border-color: #ffe58f;
+    -fx-text-fill: #fff3c4;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 3);
+}
+
+.dark-theme .speech-card,
+.dark-theme .about-card {
+    -fx-background-color: #35244a;
+    -fx-border-color: #f6b8df;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 5, 6);
+}
+
+.dark-theme .greeting-title,
+.dark-theme .about-title {
+    -fx-text-fill: #fff4fb;
+}
+
+.dark-theme .greeting-subtitle,
+.dark-theme .about-body {
+    -fx-text-fill: #dfc8ea;
+}
+
+.dark-theme .input-caption {
+    -fx-text-fill: #e7cff2;
+}
+
+.dark-theme .kawaii-input {
+    -fx-background-color: #2d1e40;
+    -fx-border-color: #d6b8ff;
+    -fx-text-fill: #fff4fb;
+    -fx-prompt-text-fill: #9b82b5;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 4);
+}
+
+.dark-theme .kawaii-input:focused {
+    -fx-background-color: #36244d;
+    -fx-border-color: #ff8ec7;
+    -fx-effect: dropshadow(one-pass-box, #ff8ec7, 1, 1.0, 0, 4);
+}
+
+.dark-theme .greeting-button {
+    -fx-background-color:
+            #ff78b8,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.32), rgba(255, 255, 255, 0.0));
+    -fx-border-color: #150c21;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 5);
+}
+
+.dark-theme .greeting-button:pressed {
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 2);
+}
+
+.dark-theme .wag-button {
+    -fx-background-color:
+            #5db4ff,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.0));
+    -fx-border-color: #150c21;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 5);
+}
+
+.dark-theme .wag-button:pressed {
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 2);
+}
+
+.dark-theme .reset-button {
+    -fx-background-color:
+            #8ce8cc,
+            linear-gradient(to bottom, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.0));
+    -fx-border-color: #150c21;
+    -fx-text-fill: #241333;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 5);
+}
+
+.dark-theme .reset-button:pressed {
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 2);
+}
+
+.dark-theme .pill-utility-button {
+    -fx-background-color: #4f386e;
+    -fx-border-color: #d6b8ff;
+    -fx-text-fill: #fff4fb;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 3);
+}
+
+.dark-theme .pill-utility-button:hover {
+    -fx-background-color: #614685;
+}
+
+.dark-theme .circle-icon-button {
+    -fx-background-color: #5b3469;
+    -fx-border-color: #ffb3d9;
+    -fx-text-fill: #fff4fb;
+    -fx-effect: dropshadow(one-pass-box, #150c21, 1, 1.0, 0, 3);
+}
+
+.dark-theme .circle-icon-button:hover {
+    -fx-background-color: #704280;
 }

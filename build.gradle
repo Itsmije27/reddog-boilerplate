@@ -20,4 +20,5 @@ javafx {
 
 application {
     mainClass = 'app.Main'
+    applicationDefaultJvmArgs = ['--enable-native-access=javafx.graphics']
 }
