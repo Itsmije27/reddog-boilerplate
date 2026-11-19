@@ -13,7 +13,8 @@ public class AppController {
     }
 
     private void greet() {
-        model.setMessage("Hallo!");
+        int clicks = model.incrementClickCount();
+        model.setMessage(clicks % 3 == 0 ? "Hallöle!" : "Hallo!");
         view.setMessage(model.getMessage());
     }
 }
