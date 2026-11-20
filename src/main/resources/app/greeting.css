@@ -1,19 +1,24 @@
+/* =================================
+   LIGHT MODE
+   Palette: #021024 #052659 #3B6B9C #5483B3 #7DA0CA #C1E8FF
+   ================================= */
+
 .root {
     -fx-font-family: "System";
-    -fx-background-color: #faf6f0;
+    -fx-background-color: #C1E8FF;
 }
 
 .greeting-artwork {
-    -fx-background-color: linear-gradient(to bottom right, #431c29, #842f39);
+    -fx-background-color: linear-gradient(to bottom right, #021024, #052659);
 }
 
 .artwork-ring {
     -fx-fill: transparent;
-    -fx-stroke: rgba(255, 202, 174, 0.35);
+    -fx-stroke: rgba(125, 160, 202, 0.45); /* #7DA0CA */
 }
 
 .artwork-sun {
-    -fx-fill: linear-gradient(to bottom right, #ffc49b, #ee8b71 48%, #ce5358);
+    -fx-fill: linear-gradient(to bottom right, #C1E8FF, #7DA0CA 48%, #5483B3);
 }
 
 .greeting-content {
@@ -23,30 +28,35 @@
 .greeting-title {
     -fx-font-family: "Serif";
     -fx-font-size: 48px;
-    -fx-text-fill: #331c25;
+    -fx-text-fill: #021024;
 }
 
 .greeting-button {
-    -fx-background-color: transparent, #7a2b3b;
+    -fx-background-color: transparent, #052659;
     -fx-background-insets: -4, 0;
     -fx-background-radius: 14, 10;
     -fx-padding: 13 20;
     -fx-font-size: 15px;
     -fx-font-weight: bold;
-    -fx-text-fill: white;
+    -fx-text-fill: #C1E8FF;
     -fx-cursor: hand;
 }
 
 .greeting-button:hover {
-    -fx-background-color: transparent, #90394b;
+    -fx-background-color: transparent, #3B6B9C;
 }
 
 .greeting-button:pressed {
-    -fx-background-color: transparent, #602030;
+    -fx-background-color: transparent, #021024;
 }
 
 .greeting-button:focused {
-    -fx-border-color: #7a2b3b;
+    -fx-border-color: #052659;
     -fx-border-insets: -4;
     -fx-border-radius: 14;
+}
+
+.weather-label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #052659;
 }
