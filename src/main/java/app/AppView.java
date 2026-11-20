@@ -14,6 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.geometry.Insets;
 
 public class AppView {
 
@@ -22,7 +25,7 @@ public class AppView {
     private final Label weatherLabel = new Label("Wetter wird geladen …");
     private final Button greetingButton = new Button("Begrüßung anzeigen");
     private final Button notificationsButton = new Button("Benachrichtigungen");
-    private final Button themeButton = new Button("Dark Mode");
+    private final Button themeButton = new Button("☾");
 
     private boolean darkMode = false;
 
@@ -37,15 +40,13 @@ public class AppView {
 
         greetingButton.getStyleClass().add("greeting-button");
         notificationsButton.getStyleClass().add("greeting-button");
-        themeButton.getStyleClass().add("greeting-button");
 
         VBox content = new VBox(
                 20,
                 messageLabel,
                 weatherLabel,
                 greetingButton,
-                notificationsButton,
-                themeButton
+                notificationsButton
         );
 
         content.setAlignment(Pos.CENTER_LEFT);
@@ -72,7 +73,19 @@ public class AppView {
 
         layout.getRowConstraints().add(row);
 
-        Scene scene = new Scene(layout, 760, 480);
+        // Kopfleiste mit Darkmode-Schalter (Team Darkmode)
+        themeButton.getStyleClass().add("theme-toggle");
+        themeButton.setAccessibleText("Darkmode einschalten");
+
+        HBox kopfleiste = new HBox(themeButton);
+        kopfleiste.setAlignment(Pos.CENTER_RIGHT);
+        kopfleiste.setPadding(new Insets(6, 12, 6, 12));
+
+        BorderPane fenster = new BorderPane();
+        fenster.setTop(kopfleiste);
+        fenster.setCenter(layout);
+
+        Scene scene = new Scene(fenster, 760, 480);
 
         // Load original Light Mode stylesheet
         String lightTheme = Objects.requireNonNull(
@@ -95,10 +108,12 @@ public class AppView {
 
             if (darkMode) {
                 scene.getStylesheets().setAll(darkTheme);
-                themeButton.setText("Light Mode");
+                themeButton.setText("☀");
+                themeButton.setAccessibleText("Darkmode ausschalten");
             } else {
                 scene.getStylesheets().setAll(lightTheme);
-                themeButton.setText("Dark Mode");
+                themeButton.setText("☾");
+                themeButton.setAccessibleText("Darkmode einschalten");
             }
         });
 
