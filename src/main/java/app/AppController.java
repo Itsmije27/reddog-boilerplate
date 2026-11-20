@@ -5,21 +5,31 @@ import javafx.stage.Stage;
 
 public class AppController {
     private final AppModel model;
+    //private final AppModel model2;
     private final AppView view;
     private Stage notificationStage;
     private NotificationView notificationView;
 
     public AppController(AppModel model, AppView view) {
         this.model = model;
+        //this.model2 = model2;
         this.view = view;
 
+        //view.setMessage(model2.getMessage());
+        
         view.setMessage(model.getMessage());
         view.setOnGreeting(this::greet);
+        view.setOnGreeting2(this::greet2);
         view.setOnOpenNotifications(this::openNotifications);
     }
 
     private void greet() {
         model.nextGreeting();
+        view.setMessage(model.getMessage());
+    }
+
+    private void greet2() {
+        model.setMessage("KUCHEN");
         view.setMessage(model.getMessage());
     }
 

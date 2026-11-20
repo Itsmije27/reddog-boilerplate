@@ -22,6 +22,8 @@ public class AppModel {
 
     private final Random random = new Random();
     private String message = "Willkommen!";
+    private String m1 = "Ihr Gewinn";
+    //private String m2= "Gewinn!";
 
     /** Wählt eine zufällige Begrüßung, die sich von der aktuellen unterscheidet. */
     public void nextGreeting() {
@@ -35,8 +37,16 @@ public class AppModel {
     public String getMessage() {
         return message;
     }
+    
+    public String getMessage2() {
+        return m1;
+    }
 
     public void setMessage(String message) {
         this.message = message;
+    }
+    
+    public void setMessage2(String m1) {
+        this.m1 = m1;
     }
 }
