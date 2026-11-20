@@ -23,6 +23,7 @@ public class AppView {
     private final Stage stage;
     private final Label messageLabel = new Label();
     private final Button greetingButton = new Button("Begrüßung anzeigen");
+    private final Button greetingButton2 = new Button("Gewinn anzeigen");
     private final Button notificationsButton = new Button("Benachrichtigungen");
     private final Button themeButton = new Button("☾");
 
@@ -35,12 +36,14 @@ public class AppView {
         messageLabel.setWrapText(true);
 
         greetingButton.getStyleClass().add("greeting-button");
+        greetingButton2.getStyleClass().add("greeting-button");
         notificationsButton.getStyleClass().add("greeting-button");
 
         VBox content = new VBox(
                 20,
                 messageLabel,
                 greetingButton,
+                greetingButton2,
                 notificationsButton
         );
 
@@ -152,6 +155,10 @@ public class AppView {
 
     public void setOnGreeting(Runnable action) {
         greetingButton.setOnAction(event -> action.run());
+    }
+
+    public void setOnGreeting2(Runnable action) {
+        greetingButton2.setOnAction(event -> action.run());
     }
 
     public void setOnOpenNotifications(Runnable action) {
