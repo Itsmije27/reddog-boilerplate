@@ -19,7 +19,6 @@ public class AppView {
 
     private final Stage stage;
     private final Label messageLabel = new Label();
-    private final Label weatherLabel = new Label("Wetter wird geladen …");
     private final Button greetingButton = new Button("Begrüßung anzeigen");
     private final Button notificationsButton = new Button("Benachrichtigungen");
     private final Button themeButton = new Button("Dark Mode");
@@ -32,9 +31,6 @@ public class AppView {
         messageLabel.getStyleClass().add("greeting-title");
         messageLabel.setWrapText(true);
 
-        weatherLabel.getStyleClass().add("weather-label");
-        weatherLabel.setWrapText(true);
-
         greetingButton.getStyleClass().add("greeting-button");
         notificationsButton.getStyleClass().add("greeting-button");
         themeButton.getStyleClass().add("greeting-button");
@@ -42,7 +38,6 @@ public class AppView {
         VBox content = new VBox(
                 20,
                 messageLabel,
-                weatherLabel,
                 greetingButton,
                 notificationsButton,
                 themeButton
@@ -138,10 +133,6 @@ public class AppView {
 
     public void setMessage(String message) {
         messageLabel.setText(message);
-    }
-
-    public void setWeather(String weather) {
-        weatherLabel.setText(weather);
     }
 
     public void setOnGreeting(Runnable action) {
