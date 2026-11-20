@@ -50,3 +50,17 @@
     -fx-border-insets: -4;
     -fx-border-radius: 14;
 }
+
+.dark-mode,
+.dark-mode .greeting-content {
+    -fx-background-color: #202124;
+}
+
+.dark-mode .label {
+    -fx-text-fill: #f1f3f4;
+}
+
+.dark-mode .button {
+    -fx-background-color: #454950;
+    -fx-text-fill: white;
+}
