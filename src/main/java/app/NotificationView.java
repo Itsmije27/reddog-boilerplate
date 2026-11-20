@@ -1,6 +1,7 @@
 package app;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
@@ -42,8 +43,10 @@ public class NotificationView extends BorderPane {
     }
 
     private final ObservableList<NotificationItem> notifications = FXCollections.observableArrayList();
+    private final WeatherService weatherService = new WeatherService();
     private final VBox cardContainer;
     private final Label unreadBadge;
+    private final Button weatherBtn;
     private boolean showOnlyUnread = false;
 
     public NotificationView() {
@@ -55,7 +58,7 @@ public class NotificationView extends BorderPane {
             this.getStylesheets().add(cssUrl.toExternalForm());
         }
 
-        // Beispieldaten
+        // Standard-Meldungen
         notifications.addAll(
             new NotificationItem("Neuer Termin", "Projekt-Meeting heute um 14:30 Uhr.", "10:15", false),
             new NotificationItem("System-Update", "Alle Module wurden erfolgreich synchronisiert.", "09:40", false),
@@ -75,7 +78,7 @@ public class NotificationView extends BorderPane {
         unreadBadge.getStyleClass().add("notification-badge");
         titleRow.getChildren().addAll(titleLabel, unreadBadge);
 
-        HBox actionRow = new HBox(10);
+        HBox actionRow = new HBox(8);
         actionRow.setAlignment(Pos.CENTER_LEFT);
 
         Button filterBtn = new Button("Nur ungelesene");
@@ -96,14 +99,18 @@ public class NotificationView extends BorderPane {
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        Button testAddBtn = new Button("+ Test-Meldung");
+        weatherBtn = new Button("Wetter");
+        weatherBtn.getStyleClass().add("notification-action-btn");
+        weatherBtn.setOnAction(e -> loadWeatherNotification());
+
+        Button testAddBtn = new Button("+ Test");
         testAddBtn.getStyleClass().add("notification-primary-btn");
         testAddBtn.setOnAction(e -> addNotification(
             "Neue Meldung",
             "Dies ist eine automatisch generierte Test-Benachrichtigung."
         ));
 
-        actionRow.getChildren().addAll(filterBtn, markAllReadBtn, spacer, testAddBtn);
+        actionRow.getChildren().addAll(filterBtn, markAllReadBtn, spacer, weatherBtn, testAddBtn);
         topBox.getChildren().addAll(titleRow, actionRow);
         this.setTop(topBox);
 
@@ -117,6 +124,27 @@ public class NotificationView extends BorderPane {
         this.setCenter(scrollPane);
 
         refreshList();
+        loadWeatherNotification();
+    }
+
+    public void loadWeatherNotification() {
+        weatherBtn.setDisable(true);
+        weatherBtn.setText("Lädt...");
+
+        Thread thread = new Thread(() -> {
+            String weather = weatherService.getWeather();
+            String text = (weather != null && !weather.isBlank())
+                    ? weather.trim()
+                    : "Keine Wetterdaten verfügbar";
+
+            Platform.runLater(() -> {
+                addNotification("Aktuelles Wetter (Köln)", text);
+                weatherBtn.setDisable(false);
+                weatherBtn.setText("Wetter");
+            });
+        }, "weather-loader");
+        thread.setDaemon(true);
+        thread.start();
     }
 
     public void addNotification(String titel, String nachricht) {
@@ -192,11 +220,10 @@ public class NotificationView extends BorderPane {
         return card;
     }
 
-    // Eigenständiger Launcher zum schnellen Testen der UI
     public static class PreviewApp extends Application {
         @Override
         public void start(Stage primaryStage) {
-            Scene scene = new Scene(new NotificationView(), 480, 620);
+            Scene scene = new Scene(new NotificationView(), 520, 620);
             primaryStage.setTitle("Benachrichtigungen - Team 3");
             primaryStage.setScene(scene);
             primaryStage.show();
