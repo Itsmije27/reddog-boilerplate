@@ -1,4 +1,3 @@
-
 package app;
 
 import java.util.Objects;
@@ -21,6 +20,7 @@ public class AppView {
     private final Stage stage;
     private final Label messageLabel = new Label();
     private final Button greetingButton = new Button("Begrüßung anzeigen");
+    private final Button notificationsButton = new Button("Benachrichtigungen");
     private final Button themeButton = new Button("Dark Mode");
 
     private boolean darkMode = false;
@@ -32,13 +32,14 @@ public class AppView {
         messageLabel.setWrapText(true);
 
         greetingButton.getStyleClass().add("greeting-button");
-
+        notificationsButton.getStyleClass().add("greeting-button");
         themeButton.getStyleClass().add("greeting-button");
 
         VBox content = new VBox(
-                26,
+                20,
                 messageLabel,
                 greetingButton,
+                notificationsButton,
                 themeButton
         );
 
@@ -66,7 +67,7 @@ public class AppView {
 
         layout.getRowConstraints().add(row);
 
-        Scene scene = new Scene(layout, 760, 440);
+        Scene scene = new Scene(layout, 760, 480);
 
         // Load original Light Mode stylesheet
         String lightTheme = Objects.requireNonNull(
@@ -85,7 +86,6 @@ public class AppView {
 
         // Switch between Light Mode and Dark Mode
         themeButton.setOnAction(event -> {
-
             darkMode = !darkMode;
 
             if (darkMode) {
@@ -99,21 +99,18 @@ public class AppView {
 
         stage.setTitle("Begrüßung");
         stage.setMinWidth(580);
-        stage.setMinHeight(340);
+        stage.setMinHeight(380);
         stage.setScene(scene);
     }
 
     private static Pane createArtwork() {
-
         Pane artwork = new Pane();
         artwork.getStyleClass().add("greeting-artwork");
         artwork.setMouseTransparent(true);
 
         Rectangle clip = new Rectangle();
-
         clip.widthProperty().bind(artwork.widthProperty());
         clip.heightProperty().bind(artwork.heightProperty());
-
         artwork.setClip(clip);
 
         Circle outerRing = new Circle(166);
@@ -124,26 +121,13 @@ public class AppView {
         innerRing.getStyleClass().add("artwork-ring");
         sun.getStyleClass().add("artwork-sun");
 
-        for (Circle circle : new Circle[] {
-                outerRing, innerRing, sun
-        }) {
+        for (Circle circle : new Circle[] { outerRing, innerRing, sun }) {
             circle.setManaged(false);
-
-            circle.centerXProperty().bind(
-                    artwork.widthProperty().multiply(0.38)
-            );
-
-            circle.centerYProperty().bind(
-                    artwork.heightProperty().multiply(0.57)
-            );
+            circle.centerXProperty().bind(artwork.widthProperty().multiply(0.38));
+            circle.centerYProperty().bind(artwork.heightProperty().multiply(0.57));
         }
 
-        artwork.getChildren().addAll(
-                outerRing,
-                innerRing,
-                sun
-        );
-
+        artwork.getChildren().addAll(outerRing, innerRing, sun);
         return artwork;
     }
 
@@ -153,6 +137,14 @@ public class AppView {
 
     public void setOnGreeting(Runnable action) {
         greetingButton.setOnAction(event -> action.run());
+    }
+
+    public void setOnOpenNotifications(Runnable action) {
+        notificationsButton.setOnAction(event -> action.run());
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 
     public void show() {
