@@ -1,0 +1,108 @@
+
+/* =================================
+   MODERN LIGHT MODE
+   ================================= */
+
+.root {
+    -fx-background-color: #f5f7ff;
+    -fx-font-family: "Segoe UI";
+}
+
+.greeting-content {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #ffffff,
+        #eef2ff
+    );
+    -fx-background-insets: 12;
+    -fx-background-radius: 20;
+    -fx-border-color: #e0e7ff;
+    -fx-border-width: 1;
+    -fx-border-radius: 20;
+    -fx-padding: 36 38 36 42;
+}
+
+.greeting-title {
+    -fx-text-fill: #1e293b;
+    -fx-font-family: "Segoe UI";
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+}
+
+.greeting-button {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #6366f1,
+        #8b5cf6
+    );
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-radius: 12;
+    -fx-padding: 13 22;
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(99, 102, 241, 0.20),
+        12,
+        0.2,
+        0,
+        3
+    );
+}
+
+.greeting-button:hover {
+    -fx-background-color: #818cf8;
+}
+
+.greeting-button:pressed {
+    -fx-background-color: #4f46e5;
+}
+
+.theme-button {
+    -fx-background-color: #eef2ff;
+    -fx-text-fill: #6366f1;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 12;
+    -fx-border-color: #c7d2fe;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-padding: 11 20;
+}
+
+.theme-button:hover {
+    -fx-background-color: #e0e7ff;
+    -fx-border-color: #818cf8;
+}
+
+.greeting-artwork {
+    -fx-background-color: linear-gradient(
+        to bottom right,
+        #dbeafe,
+        #e9d5ff
+    );
+}
+
+.artwork-ring {
+    -fx-fill: transparent;
+    -fx-stroke: rgba(99, 102, 241, 0.35);
+    -fx-stroke-width: 2.5;
+}
+
+.artwork-sun {
+    -fx-fill: linear-gradient(
+        to bottom right,
+        #f9a8d4,
+        #a78bfa,
+        #60a5fa
+    );
+    -fx-effect: dropshadow(
+        gaussian,
+        rgba(139, 92, 246, 0.30),
+        20,
+        0.3,
+        0,
+        0
+    );
+}
