@@ -14,6 +14,9 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
+import javafx.geometry.Insets;
 
 public class AppView {
     private final Stage stage;
@@ -43,7 +46,31 @@ public class AppView {
         row.setPercentHeight(100);
         layout.getRowConstraints().add(row);
 
-        Scene scene = new Scene(layout, 760, 440);
+        Button darkModeButton = new Button("☾");
+        darkModeButton.setAccessibleText("Darkmode einschalten");
+
+        HBox kopfleiste = new HBox(darkModeButton);
+        kopfleiste.setAlignment(Pos.CENTER_RIGHT);
+        kopfleiste.setPadding(new Insets(6, 12, 6, 12));
+
+        BorderPane fenster = new BorderPane();
+        fenster.setTop(kopfleiste);
+        fenster.setCenter(layout);
+
+        darkModeButton.setOnAction(event -> {
+            if (fenster.getStyleClass().contains("dark-mode")) {
+                fenster.getStyleClass().remove("dark-mode");
+                darkModeButton.setText("☾");
+                darkModeButton.setAccessibleText("Darkmode einschalten");
+            } else {
+                fenster.getStyleClass().add("dark-mode");
+                darkModeButton.setText("☀");
+                darkModeButton.setAccessibleText("Darkmode ausschalten");
+            }
+        });
+        
+        Scene scene = new Scene(fenster, 760, 440);
+        
         scene.getStylesheets().add(Objects.requireNonNull(
                 AppView.class.getResource("greeting.css")).toExternalForm());
 
