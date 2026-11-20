@@ -19,7 +19,7 @@ public class AppController {
     }
 
     private void greet() {
-        model.setMessage("Hallo!");
+        model.nextGreeting();
         view.setMessage(model.getMessage());
     }
 
