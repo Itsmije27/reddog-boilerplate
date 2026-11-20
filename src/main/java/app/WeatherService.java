@@ -2,7 +2,9 @@ package app;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.URL;
+import java.net.URI;
+import java.net.URLConnection;
+import java.nio.charset.StandardCharsets;
 
 public class WeatherService {
 
@@ -12,18 +14,14 @@ public class WeatherService {
 
             String apiUrl = "https://wttr.in/Koeln?format=3";
 
-            URL url = new URL(apiUrl);
+            URLConnection connection = URI.create(apiUrl).toURL().openConnection();
+            connection.setConnectTimeout(5000);
+            connection.setReadTimeout(5000);
 
-            BufferedReader reader =
-                    new BufferedReader(
-                            new InputStreamReader(
-                                    url.openStream()));
-
-            String result = reader.readLine();
-
-            reader.close();
-
-            return result;
+            try (BufferedReader reader = new BufferedReader(
+                    new InputStreamReader(connection.getInputStream(), StandardCharsets.UTF_8))) {
+                return reader.readLine();
+            }
 
         } catch (Exception e) {
             return "Fehler beim Abrufen der Wetterdaten";

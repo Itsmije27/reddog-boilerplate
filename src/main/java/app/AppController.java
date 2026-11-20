@@ -1,11 +1,13 @@
 package app;
 
+import javafx.application.Platform;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AppController {
     private final AppModel model;
     private final AppView view;
+    private final WeatherService weatherService = new WeatherService();
     private Stage notificationStage;
     private NotificationView notificationView;
 
@@ -16,6 +18,18 @@ public class AppController {
         view.setMessage(model.getMessage());
         view.setOnGreeting(this::greet);
         view.setOnOpenNotifications(this::openNotifications);
+
+        loadWeather();
+    }
+
+    private void loadWeather() {
+        // Netzwerkabruf im Hintergrund, damit die Oberfläche nicht einfriert
+        Thread thread = new Thread(() -> {
+            String weather = weatherService.getWeather();
+            Platform.runLater(() -> view.setWeather(weather));
+        }, "weather-loader");
+        thread.setDaemon(true);
+        thread.start();
     }
 
     private void greet() {

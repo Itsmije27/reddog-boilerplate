@@ -49,3 +49,9 @@
 .artwork-sun {
     -fx-fill: #cba6f7;
 }
+
+.weather-label {
+    -fx-font-size: 18px;
+    -fx-text-fill: #f1f1f5;
+}
+
