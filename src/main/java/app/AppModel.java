@@ -1,5 +1,5 @@
 package app;
-
+//coment
 public class AppModel {
     private String message = "Willkommen!";
     private String m1 = "Ihr Gewinn";
