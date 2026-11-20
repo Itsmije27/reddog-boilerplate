@@ -14,7 +14,8 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
+//comment nr 2
+//extra
 public class AppView {
     private final Stage stage;
     private final Label messageLabel = new Label();
