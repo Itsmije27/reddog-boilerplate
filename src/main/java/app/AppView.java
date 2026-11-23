@@ -15,12 +15,16 @@ import javafx.scene.layout.VBox;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-
+//comment nr 2
+//extra
 public class AppView {
 
     private final Stage stage;
     private final Label messageLabel = new Label();
     private final Button greetingButton = new Button("Begrüßung anzeigen");
+    private final Button greetingButton2 = new Button("Gewinn anzeigen");
+    
+    
     private final Button themeButton = new Button("Dark Mode");
 
     private boolean darkMode = false;
@@ -32,7 +36,9 @@ public class AppView {
         messageLabel.setWrapText(true);
 
         greetingButton.getStyleClass().add("greeting-button");
+        greetingButton2.getStyleClass().add("greeting-button");
 
+        VBox content = new VBox(26, messageLabel, greetingButton, greetingButton2);
         themeButton.getStyleClass().add("greeting-button");
 
         VBox content = new VBox(
@@ -150,11 +156,17 @@ public class AppView {
     public void setMessage(String message) {
         messageLabel.setText(message);
     }
-
-    public void setOnGreeting(Runnable action) {
+    
+     public void setOnGreeting(Runnable action) {
         greetingButton.setOnAction(event -> action.run());
+        greetingButton2.setOnAction(event -> action.run());
     }
 
+    public void setOnGreeting2(Runnable action) {
+        greetingButton2.setOnAction(event -> action.run());
+    }
+
+   
     public void show() {
         stage.show();
     }
